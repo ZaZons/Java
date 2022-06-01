@@ -28,12 +28,19 @@ public class ContaBancaria {
 	}
 
 	public boolean levantarValor(double valorLevantar) {
+		System.out.println("valor a levantar: " + valorLevantar);
 		if(saldoConta >= valorLevantar) {
 			saldoConta -= valorLevantar;
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public double calcularJuro(int anos) {
+		double saldoComJuros = saldoConta;
+		saldoComJuros += (saldoComJuros * taxaJuro) * anos;
+		return saldoComJuros;
 	}
 
 	public int getNumConta() {
