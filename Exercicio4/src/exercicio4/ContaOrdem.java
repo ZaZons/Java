@@ -17,7 +17,8 @@ public class ContaOrdem extends ContaBancaria {
 	@Override
 	public boolean levantarValor(double valorLevantar) {
 		valorLevantar += taxa;
-		super.levantarValor(valorLevantar);
+		
+		return super.levantarValor(valorLevantar);
 	};
 
 	public String getTipoConta() {

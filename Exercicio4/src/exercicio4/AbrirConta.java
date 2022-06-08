@@ -120,6 +120,9 @@ public class AbrirConta {
 		dados += "Cliente '" + numCliente + "'";
 		dados += "\n\tNome completo: " + contaCliente.getCliente().getNomeCliente() + " " + contaCliente.getCliente().getApelidoCliente();
 		dados += "\n\tNumero da conta: " + contaCliente.getNumConta();
+		if(contaCliente.getTipoConta() != null) {
+			dados += "\n\tTipo de conta: " + contaCliente.getTipoConta();
+		}
 		dados += "\n\tNumero de cliente: " + contaCliente.getCliente().getNumCliente();
 		dados += "\n\tSaldo da conta: " + contaCliente.getSaldoConta();
 		LocalDate data = contaCliente.getDataAberturaConta();
