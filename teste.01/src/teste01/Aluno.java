@@ -15,7 +15,7 @@ public class Aluno extends Pessoa {
 		super(nome, apelido, numCC, dataNascimento);
 	}
 
-	private boolean matricularAluno(int ano, char turma) {
+	public boolean matricularAluno(int ano, char turma) {
 		if(getMatriculado()) {
 			System.out.println("O aluno " + nome + " " + apelido + 
 				" ja se encontra matriculado, por isso nao pode ser matriculado de novo!");
@@ -27,7 +27,7 @@ public class Aluno extends Pessoa {
 			setTurma(turma);
 			setMatriculado(true);
 			
-			System.out.println("O aluno foi corretamente matriculado!");
+			System.out.println("\nO aluno " + nome + " " + apelido + " foi corretamente matriculado!");
 			System.out.println(this);
 
 			return true;
@@ -38,17 +38,22 @@ public class Aluno extends Pessoa {
 	public String toString() {
 		String res = "";
 
-		res += "Aluno: " + nome + " " + apelido;
+		res += "\nAluno: " + nome + " " + apelido;
 		res += "\n\tData de nascimento: " + dataNascimento.getDayOfMonth() + "-" +
 				dataNascimento.getMonthValue() + "-" + dataNascimento.getYear();
-		res += "\n\tAno/turma: " + ano + "o" + turma;
-		res += "\n\tDisciplinas onde esta inscrito: ";
-		if(getDisciplinas() == null) {
-			System.out.println("\n\t\t(o aluno nao se encontra inscrito em nenhuma disciplina");
-		} else {
-			for (Disciplina d : getDisciplinas()) {
-				res += "\n\t\t" + d.nomeDisciplina;
+
+		if(getMatriculado()) {
+			res += "\n\tAno/turma: " + ano + "o" + turma;
+			res += "\n\tDisciplinas onde esta inscrito: ";
+			if (getDisciplinas() == null) {
+				res += "\n\t\t(o aluno nao se encontra inscrito em nenhuma disciplina)";
+			} else {
+				for (Disciplina d : getDisciplinas()) {
+					res += "\n\t\t" + d.nomeDisciplina;
+				}
 			}
+		} else {
+			res += "\n\t\t(o aluno nao se encontra matriculado)";
 		}
 
 		return res;

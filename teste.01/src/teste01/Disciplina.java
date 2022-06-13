@@ -26,4 +26,37 @@ public class Disciplina {
 		
 		return res;
 	}
+
+	public String getNomeDisciplina() {
+		return this.nomeDisciplina;
+	}
+
+	public void setNomeDisciplina(String nomeDisciplina) {
+		this.nomeDisciplina = nomeDisciplina;
+	}
+
+	public int getAno() {
+		return this.ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
+	public char getTurma() {
+		return this.turma;
+	}
+
+	public void setTurma(char turma) {
+		this.turma = turma;
+	}
+
+	public Professor getProfessor() {
+		return this.professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
 }

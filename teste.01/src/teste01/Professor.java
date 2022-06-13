@@ -26,12 +26,12 @@ public class Professor extends Pessoa {
 	@Override
 	public String toString() {
 		String res = "";
-		res += "Nome do professor: " + nome + " " + apelido;
+		res += "Nome do Professor: " + nome + " " + apelido;
 		if(!aposentado) {
 			res += "\n\tN. horas letivas semanais: " + numHorasLetivasSemanais;
 			res += "\n\tPosicionado no " + escalao + "o escalao";
-			res += "\n\tSalario bruto: " + salarioBruto;
-			res += "\n\ttSalario liquido: " + getSalarioLiquido();
+			res += "\n\tSalario bruto: " + salarioBruto + "€";
+			res += "\n\tSalario liquido: " + getSalarioLiquido() + "€";;
 		} else {
 			res += "\n\t(este professor encontra-se aposentado)";
 		}

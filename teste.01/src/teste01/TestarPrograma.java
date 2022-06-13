@@ -33,8 +33,8 @@ public class TestarPrograma {
 
 		//Adicionar o professor Paulo as disciplinas de portugues
 		for(Disciplina d : disciplinas) {
-			if(d.nomeDisciplina == "Portugues") {
-				d.professor = professorPaulo;
+			if(d.getNomeDisciplina() == "Portugues") {
+				d.setProfessor(professorPaulo);
 			}
 		}
 		
@@ -43,12 +43,11 @@ public class TestarPrograma {
 		//Apresentar as disciplinas lecionadas pelo professor Paulo
 		System.out.println("Disciplinas lecionadas pelo professor " + professorPaulo.getNome() + " " + professorPaulo.getApelido() + ": ");
 		for(Disciplina d : disciplinas) {
-			if(d.professor != null) {
-				if(d.professor.getNome() == professorPaulo.getNome()) {
-					if(d.professor.getApelido() == professorPaulo.getApelido()) {
-						System.out.println(d.nomeDisciplina);
-						System.out.println(d.ano);
-						System.out.println(d.turma);
+			if(d.getProfessor() != null) {
+				if(d.getProfessor().getNome() == professorPaulo.getNome()) {
+					if(d.getProfessor().getApelido() == professorPaulo.getApelido()) {
+						System.out.println("\t" + d.getNomeDisciplina() + " do " + d.getAno() +
+							"o " + d.getTurma());
 					}
 				}
 			}
@@ -56,12 +55,12 @@ public class TestarPrograma {
 
 		//Criar o objeto da professora Dina
 		dataNascimento = LocalDate.parse("1974-06-19", DateTimeFormatter.ISO_DATE);
-		Professor professoraDina = new Professor("Dina", "Santos", 1059754010, dataNascimento, 3, 1879.22);
+		Professor professoraDina = new Professor("Dina", "Santos", 1059754010, dataNascimento, 3, 1879.68);
 
 		// Adicionar a professora Dina as disciplinas de matematica
 		for (Disciplina d : disciplinas) {
-			if (d.nomeDisciplina == "Matematica") {
-				d.professor = professoraDina;
+			if (d.getNomeDisciplina() == "Matematica") {
+				d.setProfessor(professoraDina);
 			}
 		}
 		
@@ -71,12 +70,11 @@ public class TestarPrograma {
 		System.out.println("Disciplinas lecionadas pela professora " + professoraDina.getNome() + " "
 				+ professoraDina.getApelido() + ": ");
 		for (Disciplina d : disciplinas) {
-			if (d.professor != null) {
-				if (d.professor.getNome() == professoraDina.getNome()) {
-					if (d.professor.getApelido() == professoraDina.getApelido()) {
-						System.out.println(d.nomeDisciplina);
-						System.out.println(d.ano);
-						System.out.println(d.turma);
+			if (d.getProfessor() != null) {
+				if (d.getProfessor().getNome() == professoraDina.getNome()) {
+					if (d.getProfessor().getApelido() == professoraDina.getApelido()) {
+						System.out.println("\t" + d.getNomeDisciplina() + " do " + d.getAno() +
+								"o " + d.getTurma());
 					}
 				}
 			}
@@ -89,5 +87,50 @@ public class TestarPrograma {
 		professoraPerpetua.setAposentado(true);
 
 		System.out.println(professoraPerpetua);
+
+		//Apresentar salario da professora Perpetura
+		System.out.println("O valor do salario liquido da professora " + professoraPerpetua.getNome() + " " + professoraPerpetua.getApelido() + " seria de: " + professoraPerpetua.getSalarioLiquido());
+
+		
+		//Criar o aluno Tiago
+		dataNascimento = LocalDate.parse("2005-03-01", DateTimeFormatter.ISO_DATE);
+		Aluno alunoTiago = new Aluno("Tiago", "Marques", 15678678, dataNascimento);
+		
+		//Matricular o aluno e inscreve-lo nas disciplinas da turma
+		alunoTiago.matricularAluno(11, 'B');
+		for(Disciplina d : disciplinas) {
+			if(d.getAno() == alunoTiago.getAno()) {
+				if(d.getTurma() == alunoTiago.getTurma()) {
+					alunoTiago.setDisciplinas(d);
+				}
+			}
+		}
+
+		System.out.println(alunoTiago);
+
+
+		//Criar o aluno Joao
+		dataNascimento = LocalDate.parse("2005-04-25", DateTimeFormatter.ISO_DATE);
+		Aluno alunoJoao = new Aluno("Joao", "Faria", 15236241, dataNascimento);
+
+		// Matricular o aluno e inscreve-lo nas disciplinas da turma
+		alunoJoao.matricularAluno(11, 'B');
+		for (Disciplina d : disciplinas) {
+			if (d.getAno() == alunoJoao.getAno()) {
+				if (d.getTurma() == alunoJoao.getTurma()) {
+					alunoJoao.setDisciplinas(d);
+				}
+			}
+		}
+
+		System.out.println(alunoJoao);
+
+		// Criar o aluno Goncalo
+		dataNascimento = LocalDate.parse("2005-09-11", DateTimeFormatter.ISO_DATE);
+		Aluno alunoGoncalo = new Aluno("Goncalo", "Ferreira", 15183729, dataNascimento);
+
+		System.out.println(alunoGoncalo);
+
+		alunoTiago.matricularAluno(10, 'C');
 	}
 }
