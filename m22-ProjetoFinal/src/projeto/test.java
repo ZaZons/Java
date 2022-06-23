@@ -12,6 +12,9 @@ public class test {
 		alunoTest.matricularAluno(10, "L", 21);
 
 		System.out.println(alunoTest);
+		
+		JFrameAlunos testAlunos = new JFrameAlunos(null);
+		testAlunos.setVisible(true);
 	}
 
 }

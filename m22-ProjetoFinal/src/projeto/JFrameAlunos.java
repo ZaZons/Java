@@ -1,4 +1,6 @@
-FlowLayoutpackage projeto;
+package projeto;
+
+import java.awt.Font;
 
 import java.awt.FlowLayout;
 
@@ -14,6 +16,7 @@ import javax.swing.JLabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -51,29 +54,32 @@ public class JFrameAlunos extends JFrame implements ActionListener {
 
   public JFrameAlunos(ArrayList<Aluno> alunos) {
     super("Alunos");
-    setSize(ALTURA, LARGURA);
+    setSize(LARGURA, ALTURA);
     
     cabecalho = new JLabel("ALUNOS");
-    labelNumAluno = new JLabel("Numero: ");
+    Font fontCabecalho = new Font("Arial", Font.BOLD, 16);
+    cabecalho.setFont(fontCabecalho);
+
+    labelNumAluno = new JLabel("Numero:");
     textNumAluno = new JTextField(4);
 
-    labelNomeAluno = new JLabel("Nome: ");
+    labelNomeAluno = new JLabel("Nome:");
     textNomeAluno = new JTextField(15);
 
-    labelApelidoAluno = new JLabel("Apelido: ");
+    labelApelidoAluno = new JLabel("Apelido:");
     textApelidoAluno = new JTextField(15);
 
-    labelnumCC = new JLabel("N.o CC: ");
+    labelnumCC = new JLabel("N.o CC:");
     textnumCC = new JTextField(7);
 
-    labelMatriculado = new JLabel("Matriculado: ");
+    labelMatriculado = new JLabel("Matriculado:");
     matriculado = new ButtonGroup();
     matriculadoSim = new JRadioButton("Sim", false);
     matriculadoNao = new JRadioButton("Nao", false);
     matriculado.add(matriculadoSim);
     matriculado.add(matriculadoNao);
 
-    labelAno = new JLabel("Ano: ");
+    labelAno = new JLabel("Ano:");
 
     ano = new ButtonGroup();
     ano10 = new JRadioButton("10", false);
@@ -83,7 +89,7 @@ public class JFrameAlunos extends JFrame implements ActionListener {
     ano.add(ano11);
     ano.add(ano12);
 
-    labelTurma = new JLabel("Turma: ");
+    labelTurma = new JLabel("Turma:");
 
     turma = new ButtonGroup();
     turmaA = new JRadioButton("A", false);
@@ -115,16 +121,13 @@ public class JFrameAlunos extends JFrame implements ActionListener {
     add(labelnumCC);
     add(textnumCC);
     add(labelMatriculado);
-    add(matriculado);
     add(matriculadoSim);
     add(matriculadoNao);
     add(labelAno);
-    add(ano);
     add(ano10);
     add(ano11);
     add(ano12);
     add(labelTurma);
-    add(turma);
     add(turmaA);
     add(turmaB);
     add(turmaC);
@@ -137,15 +140,14 @@ public class JFrameAlunos extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
     Object origem = e.getSource();
-    if (e == botaoGravar) {
+    if (origem == botaoGravar) {
 
-    } else if (e == botaoAnterior) {
+    } else if (origem == botaoAnterior) {
 
-    } else if (e == botaoSeguinte) {
+    } else if (origem == botaoSeguinte) {
 
-    } else if (e == botaoGuardarNoFicheiro) {
-      
+    } else if (origem == botaoGuardarNoFicheiro) {
+
     }
 	}
-
 }
