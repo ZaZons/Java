@@ -41,7 +41,7 @@ public class Aluno extends Pessoa {
 		res += "\nAluno: " + nome + " " + apelido;
 		res += "\n\tData de nascimento: " + dataNascimento.getDayOfMonth() + "-" +
 				dataNascimento.getMonthValue() + "-" + dataNascimento.getYear();
-
+				
 		if(getMatriculado()) {
 			res += "\n\tAno/turma: " + ano + "o" + turma;
 			res += "\n\tDisciplinas onde esta inscrito: ";
