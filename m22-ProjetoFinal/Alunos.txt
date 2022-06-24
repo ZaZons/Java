@@ -1,0 +1,14 @@
+1000,Diogo,Beijinha,1112131,true,10,A
+1001,Beatriz,Felismino,1112132,true,10,B
+1002,António,Marques,1212133,false,0,
+1003,Rafael,Faria,1212134,false,0,
+1004,Tiago,Silva,1312135,false,0,
+1005,Carla,Albano,1312136,true,10,C
+1006,Luis,Ferreira,1412137,true,11,C
+1007,Rodrigo,Miranda,1412138,true,11,B
+1008,Ruben,Santos,645454,false,0,
+1009,Gonça,Sil,15121,true,11,B
+1010,Joãofdsa,Martinsfas,16121,true,11,A
+1011,Miguelfffff,Cabeçaffffff,16121,true,11,A
+1012,Ruiiiii,Capelooooo,17121,true,12,C
+1013,Tiago ZaZon,Gomes ita,17121,true,10,A

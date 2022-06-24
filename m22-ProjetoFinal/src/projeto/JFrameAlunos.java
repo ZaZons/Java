@@ -49,6 +49,10 @@ public class JFrameAlunos extends JFrame implements ActionListener {
   JButton botaoAnterior;
   JButton botaoSeguinte;
   JButton botaoGuardarNoFicheiro;
+  int numElementos;
+  int indice = -1;
+  Aluno alunoAtual;
+  ArrayList<Aluno> listaAlunos;
   final int LARGURA = 650;
   final int ALTURA = 200;
 
@@ -111,6 +115,15 @@ public class JFrameAlunos extends JFrame implements ActionListener {
     FlowLayout flow = new FlowLayout(FlowLayout.CENTER);
     setLayout(flow);
 
+    listaAlunos = alunos;
+    numElementos = listaAlunos.size();
+    
+    if (numElementos > 0) {
+      indice = 0;
+      alunoAtual = listaAlunos.get(indice);
+      preencherCampos(alunoAtual);
+    }
+
     add(cabecalho);
     add(labelNumAluno);
     add(textNumAluno);
@@ -137,17 +150,93 @@ public class JFrameAlunos extends JFrame implements ActionListener {
     add(botaoGuardarNoFicheiro);
   }
   
+  private void gravarCampos(Aluno aluno) {
+    aluno.setNome(textNomeAluno.getText());
+    aluno.setApelido(textApelidoAluno.getText());
+    aluno.setNumCC(Long.parseLong(textnumCC.getText()));
+
+    int numeroAluno = Integer.parseInt(textNumAluno.getText());
+    aluno.setNumAluno(numeroAluno);
+
+    if (matriculadoSim.isSelected()) {
+      int anoMatricula = 0;
+      String turmaMatricula = null;
+
+      if (ano10.isSelected()) {
+        anoMatricula = 10;
+      } else if (ano11.isSelected()) {
+        anoMatricula = 11;
+      } else if (ano12.isSelected()) {
+        anoMatricula = 12;
+      } else {
+        anoMatricula = 0;
+      }
+
+      if (turmaA.isSelected()) {
+        turmaMatricula = "A";
+      } else if (turmaB.isSelected()) {
+        turmaMatricula = "B";
+      } else if (turmaC.isSelected()) {
+        turmaMatricula = "C";
+      } else {
+        turmaMatricula = null;
+      }
+
+      if (turmaMatricula != null & anoMatricula != 0) {
+        aluno.matricularAluno(anoMatricula, turmaMatricula, numeroAluno);
+      }
+    }
+  }
+
+  private void preencherCampos(Aluno aluno) {
+    textNumAluno.setText(Integer.toString(aluno.getNumAluno()));
+    textnumCC.setText(Long.toString(aluno.getNumCC()));
+    textNomeAluno.setText(aluno.getNome());
+    textApelidoAluno.setText(aluno.getApelido());
+
+    if (!aluno.isMatriculado()) {
+      matriculadoNao.setSelected(true);
+    } else {
+      matriculadoSim.setSelected(true);
+      if (aluno.getAno() == 10) {
+        ano10.setSelected(true);
+      } else if (aluno.getAno() == 11) {
+        ano11.setSelected(true);
+      } else if (aluno.getAno() == 12) {
+        ano12.setSelected(true);
+      }
+
+      if (aluno.getTurma().equals("A")) {
+        turmaA.setSelected(true);
+      } else if (aluno.getTurma().equals("B")) {
+        turmaB.setSelected(true);
+      } else if (aluno.getTurma().equals("C")) {
+        turmaC.setSelected(true);
+      }
+    }
+  }
+  
 	@Override
 	public void actionPerformed(ActionEvent e) {
     Object origem = e.getSource();
     if (origem == botaoGravar) {
-
+      if (indice != -1) {
+        gravarCampos(alunoAtual);
+      }
     } else if (origem == botaoAnterior) {
-
+      if (indice > 0) {
+        indice--;
+        alunoAtual = listaAlunos.get(indice);
+        preencherCampos(alunoAtual);
+      }
     } else if (origem == botaoSeguinte) {
-
+      if (indice < numElementos - 1) {
+        indice++;
+        alunoAtual = listaAlunos.get(indice);
+        preencherCampos(alunoAtual);
+      }
     } else if (origem == botaoGuardarNoFicheiro) {
-
+      Aluno.escreverFicheiroAlunos(listaAlunos);
     }
 	}
 }
